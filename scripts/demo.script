@@ -1,0 +1,553 @@
+character d is
+    # required
+    name is Dismas
+
+    #  sprites have to use "are"
+    sprites are neutral, happy, combat  #list
+    default is neutral #if no emotion specified when talking
+character r is
+    # required
+    name is Reynauld
+
+    sprites are neutral #list
+    default is neutral #if no emotion specified when talking
+character j is
+    # required
+    name is Junia
+
+    #  sprites have to use "are"
+    sprites are angry, happy, neutral, combat, grim  #list
+    default is neutral #if no emotion specified when talking
+character pc is
+    # required
+    name is Paracelsus
+
+    sprites are angry, happy, neutral, combat, grim  #list
+    default is neutral #if no emotion specified when talking
+
+
+
+# Scene setup with characters and initial narration
+Chapter intro_chapter is
+    title is The Old Road
+
+    Scene start is
+        background is intro-broken-carriage.png 
+
+        N: {Ruin has come to our family.}
+        N: Before my untimely demise I contacted one of my kin.
+        N: A meager fail-safe as it was, my penance was complete.
+        N: The [name] on the missive...
+
+        input into name
+        
+        N: The carriage rattles and shakes as it makes its way through the dark, twisted forest. 
+        N: The path ahead is treacherous, and you can feel the tension in the air.
+
+        show d, r
+
+        d: Keep yer eyes sharp, Reynauld. 
+        d: This road's ripe fer an ambush.
+        r: Fear not, Dismas. I am ever vigilant.
+
+        N: The silence streches on, only broken by the steady drum of the carriage.
+
+        show d smirk
+
+        d: Enjoying the ride, _name? 
+        d: Hope yer ready for what lies ahead.
+        r: Steady now, Dismas.
+
+        show d neutral
+
+        r: The Heir has a grave responsibility. 
+        r: This land is plagued by horrors untold.
+        r: Doing away with the corruption will be no easy task.
+
+        P: I understand the risks, Reynauld. 
+        P: We must restore my estate to its former glory.
+        P: It is my reponsibility anyhow.
+        P: (It is not by any fault of mine, but I must atone for my {Ancestors} sins.)
+        d: Yeah, yer talkin' like a true leader. 
+
+        N: The rogue shrugs, leaning back.
+
+        d: But first, we gotta survive this journey.
+
+        N: Suddenly, the carriage lurches to a halt. 
+        N: You hear shouting and the clash of steel outside.
+        N: Then, from the driver's seat, a gunshot and a dull thud.
+        N: Shrieks of the wheels, crying of the horses - an {ambush}!
+        N: The door is flung open, and Dismas and Reynauld leap out, weapons drawn.
+
+        show d combat, r combat
+
+        d: Fuck!
+        d: Stay inside _name! It ain'safe fer ye!
+
+        N: Without a word Reynauld pushes you inside the safety of the wagon.
+        N: With a kick from the knight, the door slams shut.
+        N: You can only watch the ensuing fight, as your protectors throw themselves into the fray.
+
+        N: The bandits are relentless, but Dismas and Reynauld fight with skill and determination.
+        N: Swords clash and bullets fly as the night is filled with the sounds of battle.
+        N: Dismas's pistol barks out a shot, taking down one of the bandits. 
+        N: The blade in his other hand parries a sword thrust, his movements a blur of deadly precision.
+
+        d: Ya picked the wrong carriage to rob!
+
+        N: Reynauld charges forward, his shield raised high. 
+        N: He bashes a bandit aside and follows up with a powerful slash from his sword.
+        r: In the name of the [Light], I will smite you!
+        N: Despite their bravery, the bandits refuse to let up. 
+        N: One manages to land a blow on Dismas, while another's dagger grazes Reynauld.
+        r: Nngh-!
+        
+        N: Momentarily distracted, he fights to keep his balance.
+        N: Behind him, Dismas is holding his own, but cannot help his struggling companion.
+        N: You notice the bringand brute raise his mace above the crusaders head...
+
+        P: Reynauld! [To your left!]
+        N: Your voice carries over the meager battlefied, alerting the knight.
+        N: He throws himself to the side, and the mace's crown lodges itself in the spot he was moments prior.
+        N: You cannot hear it, but a small mutter escapes him.
+        r: Light be praised...
+        d: Less prayin' more swingin'!
+        N: The rogue disposes of his opponent, racing to Reynauld's side.
+
+        N: With a final, desperate push, Dismas and Reynauld drive off the remaining brigand. 
+        N: Both Dismas and Reynauld are injured, but the fight is won at last.
+
+        show d wounded, r wounded
+
+        N: They'll survive.
+        P: Are you both alright?
+        N: You survey your companions, checking them over.
+        d: Just a scratch, Heir. I'll live.
+        N: His neckerchief is askew, his breathing heavy and his hair is ruffled.
+        N: His coat is torn on his shoulder, a nasty gash showing beneath the fabric.
+
+        r: It is but a flesh wound. 
+        r: My faith sustains me.
+        N: There are dents in his armor, but nothing seems to be broken.
+
+        P: (It't true, they look tired, yet they don't seem to be keeling over.)
+        P: (I should still make sure.)
+
+       
+        N: Who needs help?
+
+        choice is Tend to Dismas.
+            set help_dismas, dismas_owe_drink
+        choice is Tend to Reynauld.
+            set help_reynauld, rey_pray_invited
+        choice is Hurry and be on your way.
+            set help_noone, corruption_one
+
+        hide d, r
+
+        if not help_noone
+            show d wounded, r wounded
+            P: Please, allow me tend to your wounds.
+            hide d,r
+
+
+        if not help_dismas
+            show d wounded, r wounded
+            P: Can you hang on for a second Dismas?
+            d: Yeah, sure, I'll just be bleedin' over there.
+            hide d, r
+
+        
+        if not help_reynauld
+            show d wounded, r wounded
+            P: Will you be alright for a second, Reynauld?
+            N: The knight nods solemnly, walking aside.
+            hide d, r
+
+        if help_dismas
+            show d wounded
+            P: Dismas, let me take care of you first.
+            d: Fine.
+            d: I ain't gonna complain.
+            N: He let's you take off his coat, so you can clean the skin around the gash.
+            N: His shirt gets in the way, but you don't want him stripping naked in the middle of the woods.
+            N: ...that and the [knight's] watchful gaze makes you feel... observed.
+
+            show d neutral
+
+            N: You carefully bandage Dismas's scrape, and he gives you a grateful nod.
+            d: Appreciate it, Heir. Yer a lifesaver.
+            N: He stretches, testing out the movement of the arm.
+            N: A shadow of a wince graces his brow.
+            P: Are you sure you'll be okay?
+            P: I will take you to the sanitarium when we make it to the town.
+            d: Nah, don't ya worry about that.
+
+            show d smirk
+
+            N: Dismas dusts off his coat, and makes sure his weapons are aplace.
+            d: Well, I'm feelin' all peachy keen now!
+            d: Though that was my [good coat].
+            d: Aw, guess you'll owe me a drink fer all that savin' we did today.
+            d: I prefer wine to hostpitals anyhow.
+
+            N: He winks, adjusting his bandana.
+
+            P: A mug of the finest ale when we arrive, on me, then!
+            N: He chuckles, and motions for reynauld to get ready.
+            d: Who can say no to an' offer like that?
+
+            show d neutral
+
+            d: Now, let's get this show on the road.
+            hide d
+            
+        if help_reynauld
+            show r wounded
+
+            P: Reynauld, please, let me see if anything is wrong.
+            N: He stands there, unmoving.
+            r: I said I am fine.
+            r: We must make haste, if we're to reach the hamlet before sundown.
+            N: He moves away, but it's plain to see the limp in his gait.
+            N: You put a hand on his shoulder.
+            P: Please, allow me.
+            P: You're in no shape to set out just yet.
+            P: (Why does he have to be so stubborn? Just let me help!)
+
+            N: His posture betrays his hesitation.
+            N: Eventually, he relents, turning back to face you.
+
+            r: ...
+            r: Thank you, Heir. Your kindness is a blessing.
+            N: He allows you to inspect his leg.
+            N: There is a lot of bruising, but your initial assesment was correct.
+            N: Still, you do your best to clean up the small cuts and scrapes.
+
+            show r neutral
+
+            P: See? All better now.
+            N: You look up from where you;re kneeling in front of him, before you roll down his breeches.
+            N: The helmet renders his expression unreadable.
+            N: Eventually, as if reminded where he is, he jerks his leg back and offers you a hand.
+
+            r: My sincerest thanks, heir _name.
+            P: Of course!
+            P: It's the least I could do for such an valiant protector.
+    
+            N: He turns away again, signaling for Dismas to stand.
+            N: Still... Quiely, he turns his head to you.
+
+            r: Please, come by the abbey sometime.
+            r: We've Light to thank for our safe return.
+            hide r
+
+        if help_noone
+            show d wounded, r wounded
+            N: The battle was hard, but won.
+            N: You escorts did their job.
+            N: The road leading to the {Hamlet} should be clear now.
+
+            P: (They'll be fine.)
+            P: There's a clearing up there, we may camp, if you feel the need.
+
+            N: There's a murmur in the wind.
+            N: {"Welcome Home"}
+
+            N: Your companions are a bit worse for the wear, but as you asses earlier - they're unharmed.
+
+            choice is Check on them.
+                unset corruption_one #remove bad route start
+            choice is Time is wasting.
+
+            if not corruption_one
+                N: Stricken with a sudden empathy, you move back to your companions.
+                show d neutral,r neutral
+                P: My apologies.
+                P: How are you feeling?
+
+                d: Eh.
+                d: Coulda been worse I suppose.
+                d: I ain't seen real action fer months now, tis was as good as practice as any.
+
+                N: He shrugs.
+
+                r: The fight was won, that is all that matters.
+                N: There's a grateful note in his voice.
+
+                hide d,r
+
+            show d, r
+            P: Alright, let's set out.
+
+            d: ...
+            r: Light, take us into your care.
+        show d neutral, r neutral
+
+        N: With the immediate threat dealt with, you continue your journey to the Hamlet.
+        go hamlet_arrival
+
+
+
+    # Scene: Arrival at the hamlet
+    Scene hamlet_arrival is
+        background is town-view.png
+        
+        N: As the sun sets, you finally arrive at the hamlet.
+        N: The journey has been long and treacherous, but you have made it.
+        N: The hamlet, though in disrepair, holds a glimmer of hope.
+
+        N: Dismas and Reynauld escort you to the {manor}, a grand but dilapidated building at the heart of the hamlet.
+
+        background is mansion-outside.png
+
+        P: ...
+        N: It looms over you.
+        N: Warning,
+        N: [Crushing],
+        N: {Suffocating} you with it's presence.
+
+        P: (So this is where...)
+        
+        if help_dismas
+            show d
+            N: Dismas notices the shudder that runs through you.
+
+            d: Keep yer head up, _name.
+            d: This ain't a ruin or nothin.
+            d: It ain't much much now, either, but it's potential.
+
+            show d happy
+
+            N: His hand is a welcome pressure on your shoulder.
+            d: Now, ya ain't gotta set up shop 'ere, just sayin'.
+            d: I'm sure yer folks wouldn't mind if ya holed up somewhere else.
+
+            N: His words are meant to comfort, in his own way,
+            N: But your way ahead is clear.
+            N: This is where it started.
+
+            N: You swallow the strange feeling down.
+
+            P: Thanks Dismas.
+            P: I have to make this right.
+            P: But... There's a lot of space here.
+            P: If you need a [place to stay]...
+            P: The doors are open.
+
+            N: The corner's of Dismas' eyes crinkle.
+            N: You can't be certain, but it looks like he's smiling.
+
+            d: Ya know what?
+            d: I might just take ya up on that offer.
+            d: Haven't gotten ta sleep on a proper bed, since forever.
+
+            N: His hand leaves your shoulder.
+            d: Now me an' tin man are gonna leave ya to get all comfortable 'ere.
+
+            d: Oi, ya hear that, holy man? 
+            d: We're all done 'ere!
+            N: He jams his elbow in Reynaulds side for good measure.
+            d: Ow!
+            N: Right into the steel plate.
+            N: Their casual camraderie brings a smile to your face.
+            P: (Maybe this won't be so bad...)
+
+            hide d
+            N: You are {doomed}.
+
+        if help_reynauld
+            N: Before you can say anything, Reynauld steps forward.
+            show r
+            r: 'Tis not a place of honor.
+            N: He looks up, surveying the state of the building.
+
+            r: But it is secure against any more miscreants.
+            r: I shall enlist the help of the locals to bring it up to thine standard, Heir.
+
+            N: Fervent adoration permeates his every word.
+            N: He really believes that you will succeed.
+            N: When you don't answer, he turns to you.
+
+            r: This shall be the most tasking of holy missions.
+            show r happy
+
+            r: But have faith.
+            r: We've light on our side, and helping souls aplenty.
+
+            N: He is armoured from head to toe, but you detect a hint of smile beneath the righteous words.
+
+            P: Thank you, Reynauld.
+            P: It is strange to be here, and the task will be nigh impossible.
+            P: How come you have so much faith?
+
+            N: He [looks] at you, for the first time since the ambush.
+            r: A strange question... Faith is what gives life purpose, Heir.
+            r: It is our only weapon against this miasmatic corruption.
+            r: It is what makes good men into righteous men.
+
+            N: It feels like he's looking past you now.
+            N: The moment passes, he lowers his head.
+            show r neutral
+
+            P: That is... comforting.
+            P: Thank you again Reynauld. 
+            P: I will be calling on you in the coming days.
+            P: There is much work to be done.
+            P: (What a strange pair, a convict and a holy man...)
+
+            P: I won't keep you anymore.
+            P: if you're in need of shelter, the doors of the estate are open to you.
+
+            N: There is a light breeze in the air.
+
+            r: Thine offer is generous, Heir, but I mustn't accept.
+            r: It is not right for a knight to lodge with nobility.
+            r: I shall stay at the abbey, the quietness there will be most appropiate.
+
+            N: You nod.
+            N: Reynauld is a strange man, but he trusts you completely.
+
+            P: Take care, then.
+            P: I shall see you soon.
+            r: Farewell, Heir.
+            r: Thief! Our work is done here, we may depart!
+
+            hide r
+            P: (There is much to be done, but with friends at my side, maybe it won't be so bad...)
+
+            N: You are {doomed}.
+
+        if help_noone
+            P: (...where I shall live.)
+            N: You meet the building head on.
+
+            background is mansion-foyer.png
+
+            N: Dismas and Reynauld help to carry your things inside, despite their exhaustion.
+            N: The trek to the Hamlet was difficult for them.
+            N: ...
+            N: Standing inside, the house is eerily silent.
+
+            if corruption_one
+                N: The old brick that forms the walls is cold
+                N: Strangely, despite your light overcoat, you don't mind the chill at all.
+
+                N: Looking around, the manor doesn't look half as destitute than your venerable {Ancestor} made it out to be.
+                P: (What strange books... without any labels.)
+
+                N: You feel a pull towards a particular one, marked by your hourses sigil.
+
+                N: The carpet of dust makes it difficult to breathe in this corner.
+                P: (I need some proper Housework done around here.)
+
+                P: Hey, Reynauld-
+
+                N: There's nobody here anymore.
+                N: Exhausted by the journey, your companions quietly slinked away.
+
+                P: ...
+                P: (I suppose I have time to explore the manor more, then.)
+
+                N: There are secrets you shouldn't disturb buried here.
+                N: Though, the dread of the manor feels more... {familiar}.
+                N: It is [your] Estate now.
+            if not corruption_one
+                N: [Too] silent. Unnaturally so.
+                N: You take a few steps backwards, until you almost topple the thief over.
+
+                show d smirk
+                P: My apologies! I didn't hear you there!
+                d: Heh, funny ya say that...
+                show d happy
+                N: He catches his balance easily, like a cat dancing on the ledge.
+                N: In his hands, there is a box, filled wither with what clothing you managed to pack, or the academic supplies you thought were useful.
+
+                N: He's adept at hiding it, but the exhaustion from the journey here took it's toll on him.
+                d: What do ya got packed 'ere anyways?
+                d: It feels like a ton of bricks - don't tell em the noble house wanted ya to pack gold bars with ya?
+
+                N: He sets the box down, the leans down, lowering his voice slightly.
+                show d smirk
+                d: Though if I were ye, I wouldn't be leavin' yer valuables all strewn around...
+                d: ...lest ya wan't the walkin' tin can snagging one of yer books!
+
+                N: He barks out a laugh.
+                show d neutral
+
+                d: We are damn ner keelin' over, _name.
+                d: So, if ya care t'find me after yer done cozyin' up 'here, I'll be in town.
+                d: [Self-medicatin'] as it were.
+
+                N: He points over his shoulder, where the shadow of reynauld falls throught he door.
+                
+                d: 'ol bloodhound? He'll prolly be at the convent.
+                show d happy
+                d: Pffft, the [Abbey] more like, say's he's got a wife and kid out there somewhere.
+
+                N: He gives you a semi dramatic bow.
+                d: An' now we'll leave [Your Esteemed Heirecy].
+                d: Take care.
+
+                hide d
+
+                N: With his steps fading, the house falls silent once again.
+                N: You can hear the wood creaking, and their voices outside.
+                N: You are {doomed}.
+            #this should throw error
+
+        background is mansion-outside.png
+
+        N: After settling in, you feel a renewed sense of purpose.
+        N: You decide to visit one of the buildings in the hamlet to see how you can assist your companions.
+        go main_menu
+
+    # Scene: Main menu for further adventures and interactions
+    Scene main_menu is
+        background is town-view.png
+        N: What would you like to do next?
+            choice is Organize a new expedition
+                go expedition_setup
+            choice is Talk to Dismas
+                go talk_dismas
+            choice is Talk to Reynauld
+                go talk_reynauld
+            choice is Talk to Junia
+                go talk_junia
+            choice is Talk to Paracelsus
+                go talk_paracelsus
+
+    # Placeholder scenes for character interactions and further gameplay
+    Scene expedition_setup is
+        background is expedition.png
+        N: Time to organize a new expedition.
+        N: Your journey is just beginning.
+        N: {There is so much to be done.}
+        N: Hey psst, did you like this proof-of-concept demo?
+        N: If you want to help me write something more substantial, shoot me an email at darkestdungeondatingsim@gmail.com!
+        go end
+
+    Scene talk_dismas is
+        background is tavern.png
+        show d
+        d: What's on your mind, [_name]?
+        go main_menu
+
+    Scene talk_reynauld is
+        background is abbey.png
+        show r
+        r: How can I assist you, [_name]?
+        go main_menu
+
+    Scene talk_junia is
+        background is sanitarium.png
+        show j
+        j: Do you need healing, [_name]?
+        go main_menu
+
+    Scene talk_paracelsus is
+        background is laboratory.png
+        show pc
+        pc: What knowledge do you seek, [_name]?
+        go main_menu

@@ -1,0 +1,10 @@
+_site/
+node_modules/
+public/
+node_modules/*
+*.clip
+.directory
+.env
+package-lock.json
+venv/
+.vscode/settings.json

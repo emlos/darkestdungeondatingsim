@@ -58,6 +58,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(faviconsPlugin, { outputDir: "./" + outputDir });
 
   return {
+    pathPrefix: process.env.DDDSIM_ENV.toLowerCase() == "deploy" ? 'darkestdungeondatingsim' : '',
     dir: {
       input: "src",
       output: outputDir,

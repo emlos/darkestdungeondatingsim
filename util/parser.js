@@ -1,8 +1,10 @@
 const fs = require('fs')
 const path = require('path')
 
-const characterssrc = '/images/characters/' //TODO: cleanup for 1.0
-const backgroundsrc = '/images/backgrounds/'
+const characterssrc = '/darkestdungeondatingsim/images/characters/' //TODO: cleanup for 1.0
+const backgroundsrc = '/darkestdungeondatingsim/images/backgrounds/'
+
+const imagesrc = '/darkestdungeondatingsim/images/'
 
 
 const scriptsPath = join('', '../scripts/')
@@ -157,7 +159,7 @@ function parseAll(text) {
 
     setReference('characters', 'N', { name: 'Narrator', sprites: null })
     setReference('characters', 'P', { name: 'Player', sprites: null })
-    references['source'] = '/images/'
+    references['source'] = imagesrc
 
     return lines
   }

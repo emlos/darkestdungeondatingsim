@@ -1,4 +1,4 @@
 
 {
-    "permalink": "/scripts/{{page.fileSlug}}.js"
+    "permalink": "{{pathPrefix}}/scripts/{{page.fileSlug}}.js"
 }

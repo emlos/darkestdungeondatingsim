@@ -809,7 +809,8 @@ function loadInput(dialogueInput) {
     '24601',
     'Paul Allen',
     'Beetlejuice',
-    'K/Clara'
+    'K/Clara',
+    "Run failed"
   ]
 
   //user is supposed to input

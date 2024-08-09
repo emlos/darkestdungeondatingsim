@@ -1,6 +1,10 @@
+---
+permalink: "{{ pathPrefix }}/css/dddsim.css"
+---
+
 :root {
-	--cursor-normal: url(/images/ui/arrow.png);
-	--cursor-pointer: url(/images/ui/arrow.png);
+	--cursor-normal: url({{'/images/ui/arrow.png' | url}});
+	--cursor-pointer: url({{'/images/ui/arrow.png' | url}});
 
 	--color-gold: #887849;
 	--color-yellow: #dbb74f;
@@ -11,23 +15,23 @@
 
 @font-face {
 	font-family: "Ubuntu-Regular";
-	src: url("/fonts/ubuntu-regular.woff") format("woff");
+	src: url("{{"/fonts/ubuntu-regular.woff" | url}}") format("woff");
 }
 
 @font-face {
 	font-family: "Ubuntu-Mono-Regular";
-	src: url("/fonts/ubuntu-mono-regular.woff") format("woff");
+	src: url("{{"/fonts/ubuntu-mono-regular.woff"  | url}}") format("woff");
 }
 
 @font-face {
 	font-family: "Dwarvenaxe";
-	src: url("/fonts/dwarvenaxe.woff") format("woff");
+	src: url("{{"/fonts/dwarvenaxe.woff"  | url}}") format("woff");
 }
 
 @font-face {
 	font-family: "Ubuntu-Light";
-	src: url("/fonts/ubuntu-light.woff2") format("woff2"),
-		url("/fonts/ubuntu-light.woff") format("woff");
+	src: url("{{"/fonts/ubuntu-light.woff2"  | url}}") format("woff2"),
+		url("{{"/fonts/ubuntu-light.woff"  | url}}") format("woff");
 	font-weight: normal;
 	font-style: normal;
 }
@@ -74,7 +78,7 @@
 }
 
 .dddsim-options-button {
-	background-image: url(/images/ui/menu_button.png);
+	background-image: url({{"/images/ui/menu_button.png"  | url}});
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -102,7 +106,7 @@
 }
 
 .close-modal-button {
-	background-image: url(/images/ui/close_button_round.png);
+	background-image: url({{"/images/ui/close_button_round.png"  | url}});
 
 	background-size: contain;
 	background-position: center;
@@ -116,7 +120,7 @@
 	top: calc(11% + (11% / 19));
 }
 #popup {
-	background-image: url(/images/ui/popup_panel.png);
+	background-image: url({{"/images/ui/popup_panel.png"  | url}});
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -178,7 +182,7 @@
 }
 
 .dddsim-settings-area {
-	background-image: url(/images/ui/menu_panel.png);
+	background-image: url({{"/images/ui/menu_panel.png"  | url}});
 	width: 60vw;
 	height: calc(60vw / 1.2);
 }
@@ -256,58 +260,58 @@
 }
 
 .settings-button-increase {
-	background-image: url(/images/ui/menu_right_arrow.png);
+	background-image: url({{"/images/ui/menu_right_arrow.png"  | url}});
 }
 
 .settings-button-increase:hover {
-	background-image: url(/images/ui/menu_right_arrow_hover.png);
+	background-image: url({{"/images/ui/menu_right_arrow_hover.png"  | url}});
 }
 
 .settings-button-increase.disabled,
 .settings-row.disabled .settings-button-increase {
 	filter: none;
-	background-image: url(/images/ui/menu_right_arrow_disabled.png);
+	background-image: url({{"/images/ui/menu_right_arrow_disabled.png"  | url}});
 }
 
 .settings-button-increase.disabled:hover,
 .settings-row.disabled .settings-button-increase:hover {
-	background-image: url(/images/ui/menu_right_arrow_disabled_hover.png);
+	background-image: url({{"/images/ui/menu_right_arrow_disabled_hover.png"  | url}});
 }
 
 .settings-button-decrease {
-	background-image: url(/images/ui/menu_left_arrow.png);
+	background-image: url({{"/images/ui/menu_left_arrow.png"  | url}});
 }
 
 .settings-button-decrease:hover {
-	background-image: url(/images/ui/menu_left_arrow_hover.png);
+	background-image: url({{"/images/ui/menu_left_arrow_hover.png" | url}});
 }
 .settings-button-decrease.disabled,
 .settings-row.disabled .settings-button-decrease {
-	background-image: url(/images/ui/menu_left_arrow_disabled.png);
+	background-image: url({{"/images/ui/menu_left_arrow_disabled.png" | url}});
 }
 .settings-button-decrease.disabled:hover,
 .settings-row.disabled .settings-button-decrease:hover {
-	background-image: url(/images/ui/menu_left_arrow_disabled_hover.png);
+	background-image: url({{"/images/ui/menu_left_arrow_disabled_hover.png" | url}});
 }
 
 .settings-checkbox {
-	background-image: url(/images/ui/menu_checkbox_empty.png);
+	background-image: url({{"/images/ui/menu_checkbox_empty.png" | url}});
 }
 .settings-checkbox:hover {
-	background-image: url(/images/ui/menu_checkbox_empty_hover.png);
+	background-image: url({{"/images/ui/menu_checkbox_empty_hover.png" | url}});
 }
 .settings-checkbox.checked {
-	background-image: url(/images/ui/menu_checkbox_checked.png);
+	background-image: url({{"/images/ui/menu_checkbox_checked.png" | url}});
 }
 .settings-checkbox.checked:hover {
-	background-image: url(/images/ui/menu_checkbox_checked_hover.png);
+	background-image: url({{"/images/ui/menu_checkbox_checked_hover.png" | url}});
 }
 
 .dddsim-saves-area, .dddsim-log-area {
 	display: flex;
 	flex-direction: column;
 
-	background-image: url(/images/ui/saves_panel.png);
+	background-image: url({{"/images/ui/saves_panel.png" | url}});
 
 	width: 70vw; /* Adjust as needed */
 	height: calc(70vw / 1.6); /* Maintain 1.4 aspect ratio */
@@ -364,7 +368,7 @@
 }
 
 .dddsim-saves-container::-webkit-scrollbar-track, .dddsim-log-container::-webkit-scrollbar-track {
-	background: url("/images/ui/scroll_gutter.png") repeat-y; /* Tiled image on the y axis */
+	background: url("{{"/images/ui/scroll_gutter.png" | url}}") repeat-y; /* Tiled image on the y axis */
 	background-color: #171717; /* fallback color if the image is not loaded */
 	background-size: contain;
 	border: 1px solid #090909; /* border around the track */
@@ -382,11 +386,11 @@
 }
 
 .dddsim-saves-container::-webkit-scrollbar-button:vertical:decrement, .dddsim-log-container::-webkit-scrollbar-button:vertical:decrement  {
-	background-image: url("/images/ui/scroll_arrow_top.png"); /* turned arrow for the top */
+	background-image: url("{{"/images/ui/scroll_arrow_top.png" | url}}"); /* turned arrow for the top */
 }
 
 .dddsim-saves-container::-webkit-scrollbar-button:vertical:increment, .dddsim-log-container:-webkit-scrollbar-button:vertical:increment  {
-	background-image: url("/images/ui/scroll_arrow_down.png"); /* normal arrow for the bottom */
+	background-image: url("{{"/images/ui/scroll_arrow_down.png" | url}}"); /* normal arrow for the bottom */
 }
 
 .dddsim-save-wrapper {
@@ -415,7 +419,7 @@
 }
 
 .dddsim-save-background {
-	background-image: url(/images/ui/saveslot.png);
+	background-image: url({{"/images/ui/saveslot.png" | url}});
 	background-size: 100% 100%;
 	width: 75%;
 	height: 100%;
@@ -426,7 +430,7 @@
 .dddsim-save-wrapper:hover .dddsim-save-background,
 .dddsim-save-background:hover,
 .dddsim-save-wrapper.active .dddsim-save-background {
-	background-image: url(/images/ui/saveslot_hovered.png);
+	background-image: url({{"/images/ui/saveslot_hovered.png" | url}});
 }
 
 .dddsim-save-preview {
@@ -437,7 +441,7 @@
 }
 
 .dddsim-save-wrapper[data-save="empty"] .dddsim-save-preview {
-	background-image: url(/images/ui/empty_save.png);
+	background-image: url({{"/images/ui/empty_save.png" | url}});
 
 	height: calc(6.5vw / 1.31);
 }
@@ -445,7 +449,7 @@
 .dddsim-save-wrapper[data-save="empty"]:hover .dddsim-save-preview,
 .dddsim-save-wrapper[data-save="filled"] .dddsim-save-preview,
 .dddsim-save-wrapper[data-save="empty"].active .dddsim-save-preview {
-	background-image: url(/images/ui/filled_save.png);
+	background-image: url({{"/images/ui/filled_save.png" | url}});
 	height: calc(6.5vw / 0.934);
 }
 
@@ -547,7 +551,7 @@
 }
 
 .delete-save-button {
-	background-image: url(/images/ui/close_button.png);
+	background-image: url({{"/images/ui/close_button.png" | url}});
 }
 
 .dddsim-save-wrapper:not(.active) .confirm-save-button {
@@ -555,7 +559,7 @@
 }
 
 .confirm-save-button {
-	background-image: url(/images/ui/ok_button.png);
+	background-image: url({{"/images/ui/ok_button.png" | url}});
 }
 
 .dddsim-log-container {
@@ -587,7 +591,7 @@
 }
 
 .dddsim-characters {
-	/*background-image: url(/images/backgrounds/placeholder.png);*/
+	/*background-image: url({{"/images/backgrounds/placeholder.png" | url}});*/
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -637,7 +641,7 @@
 }
 
 .dismas-neutral {
-	background-image: url(/images/characters/dismas/neutral.png);
+	background-image: url({{"/images/characters/dismas/neutral.png" | url}});
 }
 
 .dddsim-talk-area {
@@ -660,7 +664,7 @@
 }
 
 .dddsim-talkbox {
-	background-image: url(/images/ui/talkbox_notalk.png);
+	background-image: url({{"/images/ui/talkbox_notalk.png" | url}});
 	background-size: 100% 100%;
 	background-position: center;
 	height: 100%;
@@ -674,15 +678,15 @@
 }
 
 .dddsim-talkbox.leftspeaker {
-	background-image: url(/images/ui/talkbox_left.png);
+	background-image: url({{"/images/ui/talkbox_left.png" | url}});
 }
 
 .dddsim-talkbox.rightspeaker {
-	background-image: url(/images/ui/talkbox_right.png);
+	background-image: url({{"/images/ui/talkbox_right.png" | url}});
 }
 
 .dddsim-talkbox-nextbutton {
-	background-image: url(/images/ui/next_icon.png);
+	background-image: url({{"/images/ui/next_icon.png" | url}});
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -766,11 +770,11 @@ input#talkbox-text-input:focus-within {
 }
 
 #random-textinput-button {
-	background-image: url(/images/ui/random_button.png);
+	background-image: url({{"/images/ui/random_button.png" | url}});
 }
 
 #confirm-textinput-button {
-	background-image: url(/images/ui/ok_button.png);
+	background-image: url({{"/images/ui/ok_button.png" | url}});
 }
 
 .dddsim-talkbox-nametag {
@@ -874,7 +878,7 @@ input#talkbox-text-input:focus-within {
 /*ui elements*/
 
 .panel {
-	background-image: url(/images/ui/small_box.png);
+	background-image: url({{"/images/ui/small_box.png" | url}});
 	background-size: 100% 100%;
 	background-position: center;
 	background-repeat: no-repeat;

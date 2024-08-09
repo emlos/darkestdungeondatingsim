@@ -1,12 +1,11 @@
 //hardcoded (maybe read in from conf file?)
 const fs = require('fs')
 
-
-const imagesrc = '/images/'
+const imagesrc =  '/darkestdungeondatingsim/'+ '/images'
 
 module.exports = {
   title: 'Heart of Darkness',
-  background: '/images/backgrounds/main.png',
+  background: imagesrc + '/backgrounds/main.png',
   playerstate: {
     name: null,
     flags: [],

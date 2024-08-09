@@ -6,10 +6,11 @@
   "scripts": {
     "linter_setup": "rm -rf ./venv && python -m venv venv && source venv/bin/activate && pip install djlint && deactivate && echo \"=== EXTENSION SETUP ===\" && code . --new-window --install-extension ms-python.python --install-extension monosans.djlint && echo \"=== NPM Setup ===\" && npm i",
     "dry": "npx eleventy --serve --quiet",
-    "debug": "export DDDSIM_ENV=debug && rm -rf public && DEBUG=Eleventy* npx eleventy --serve",
-    "start": "export DDDSIM_ENV=dev && rm -rf public && npx eleventy --serve --quiet",
-    "build": "export DDDSIM_ENV=deploy && rm -rf _site && npx eleventy --quiet --output=_site && echo -n size: && du -hs _site",
-    "upload": "git push && npm run build && neocities push _site && neocities list /"
+    "debug": "export DDDSIM_ENV=debug && rm -rf local && DEBUG=Eleventy* npx eleventy --serve",
+    "start": "export DDDSIM_ENV=dev && rm -rf local && npx eleventy --serve --quiet",
+    "build_old": "export DDDSIM_ENV=deploy && rm -rf public && npx eleventy --quiet --output=public && echo -n size: && du -hs _site",
+    "build": "export DDDSIM_ENV=deploy && eleventy",
+    "upload": "git push && npm run build_old && neocities push public && neocities list /"
   },
   "author": "",
   "license": "ISC",

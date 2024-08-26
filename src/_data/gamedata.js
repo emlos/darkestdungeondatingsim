@@ -1,7 +1,10 @@
-//hardcoded (maybe read in from conf file?)
 const fs = require('fs')
 
-const imagesrc =  '/darkestdungeondatingsim/'+ '/images'
+const config = require( "./config");
+
+const prefix = '/' + config.githubPrefix + '/'
+
+const imagesrc =  prefix + '/images'
 
 module.exports = {
   title: 'Heart of Darkness',

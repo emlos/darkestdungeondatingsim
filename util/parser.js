@@ -1,10 +1,12 @@
 const fs = require('fs')
-const path = require('path')
+const path = require('path');
+const config = require('../src/_data/config');
 
-const characterssrc = '/darkestdungeondatingsim/images/characters/' //TODO: cleanup for 1.0
-const backgroundsrc = '/darkestdungeondatingsim/images/backgrounds/'
 
-const imagesrc = '/darkestdungeondatingsim/images/'
+const characterssrc = `/${config.githubPrefix}/images/characters/` //TODO: cleanup for 1.0
+const backgroundsrc = `/${config.githubPrefix}/images/backgrounds/`
+
+const imagesrc = `/${config.githubPrefix}/images/`
 
 
 const scriptsPath = join('', '../scripts/')

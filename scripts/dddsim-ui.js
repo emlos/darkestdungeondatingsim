@@ -101,8 +101,13 @@ const HTML = {
 
 // INIT----------------------------------
 
+
+
 //initializes game start
 function init() {
+
+  preloadImages()
+
   HTML.all_modals = document.querySelectorAll('.dddsim-modal')
 
   HTML.nametag = document.getElementById('nametag')
@@ -191,6 +196,22 @@ function init() {
 
   }
 
+}
+
+function preloadImages() {
+  let spinner = document.getElementById('spinner')
+
+  show(HTML.overlay, spinner)
+
+  imageArray = GAME_CONFIG.images
+  let images = [];
+  for (let i = 0; i < imageArray.length; i++) {
+    images[i] = new Image();
+    images[i].src = imageArray[i];
+    //console.log(imageArray[i])
+  }
+
+  hide(HTML.overlay, spinner)
 }
 
 function initChapter(chapter = CURRENT.chapter) {
@@ -689,9 +710,8 @@ function loadDialogueCharacters(characters, speaking) {
 
 
 function loadDialogueSetsFlags(flags) {
-  
-  if (flags)
-  {
+
+  if (flags) {
     log("dialogue flags:", ...flags)
     setPlayerdataFlags(flags)
 
@@ -1135,7 +1155,7 @@ function spaceAdvances(callback_id, callback, keycode = 32) {
   document.addEventListener('keydown', wrappedCallback)
 }
 
-function spaceUnbind(key) { 
+function spaceUnbind(key) {
   // Retrieve the wrapped callback using the key
   const callback = CURRENT.spaceHandler.callbacks.get(key)
   if (callback) {
@@ -1183,7 +1203,8 @@ function setPlayerdataFlags(...flags) {
     if (flag.includes('!')) {
       flag = flag.replace('!', '')
       GAME.PLAYERSTATE.flags = GAME.PLAYERSTATE.flags.filter(e => {
-        return e != flag});
+        return e != flag
+      });
     }
     else {
       if (!GAME.PLAYERSTATE.flags.includes(flag)) {
@@ -1887,7 +1908,7 @@ function log(...text) {
 }
 
 function warn(text) {
-  console.log('WARN: ' + text) 
+  console.log('WARN: ' + text)
 }
 
 

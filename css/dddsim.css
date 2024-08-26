@@ -1015,3 +1015,38 @@ a:active {
 .toggle {
 	display: none !important;
 }
+
+#spinner {
+
+	z-index: 9999;
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-color: black;
+    transform: rotate(45deg);
+    overflow: hidden;
+
+	left: 0; 
+	right: 0; 
+	margin-left: auto; 
+	margin-right: auto; 
+	top: 0;
+	bottom: 0;
+	margin-bottom: auto;
+	margin-top: auto;
+  }
+  #spinner:after{
+    content: '';
+    position: absolute;
+    inset: 8px;
+    margin: auto;
+    background: black;
+  }
+  #spinner:before{
+    content: '';
+    position: absolute;
+    inset: -15px;
+    margin: auto;
+    background: #de3500;
+    animation: diamondLoader 2s linear infinite;
+  }

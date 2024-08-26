@@ -32,7 +32,7 @@ function getAllImagePaths(dir, relativeDir) {
             results = results.concat(getAllImagePaths(filePath, path.join(relativeDir, file)));
         } else if (isImageFile(file)) {
             // Add the relative file path to the results array
-            results.push(path.join(prefix, relativeDir, file));
+            results.push(path.join('/',prefix, relativeDir, file));
         }
     });
 

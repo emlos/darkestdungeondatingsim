@@ -101,10 +101,13 @@ const HTML = {
 
 // INIT----------------------------------
 
-preloadImages()
+
 
 //initializes game start
 function init() {
+
+  preloadImages()
+
   HTML.all_modals = document.querySelectorAll('.dddsim-modal')
 
   HTML.nametag = document.getElementById('nametag')
@@ -196,15 +199,19 @@ function init() {
 }
 
 function preloadImages() {
+  let spinner = document.getElementById('spinner')
+
+  show(HTML.overlay, spinner)
+
   imageArray = GAME_CONFIG.images
   let images = [];
   for (let i = 0; i < imageArray.length; i++) {
     images[i] = new Image();
     images[i].src = imageArray[i];
-    console.log(imageArray[i])
+    //console.log(imageArray[i])
   }
 
-  console.log('done prefloading!')
+  hide(HTML.overlay, spinner)
 }
 
 function initChapter(chapter = CURRENT.chapter) {

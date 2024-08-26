@@ -1,7 +1,10 @@
 const faviconsPlugin = require("eleventy-plugin-gen-favicons");
 
 const simpleGit = require("simple-git");
+const config = require("./src/_data/config");
 const git = simpleGit({ multiLine: true });
+
+
 
 const outputDir =
   process.env.DDDSIM_ENV.toLowerCase() == "deploy" ? "public" : "local";
@@ -60,7 +63,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(faviconsPlugin, { outputDir: "./" + outputDir });
 
   return {
-    pathPrefix: '/darkestdungeondatingsim/',
+    pathPrefix: '/' + config.githubPrefix + '/',
     dir: {
       input: "src",
       output: outputDir,
